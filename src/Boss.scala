@@ -27,7 +27,7 @@ class Boss(numNodes:Int = 1000, numRequest: Int = 1) extends Actor {
 	randomPool.append(0)
 	randomPool.append(Int.MaxValue)
 	
-	def receive : Actor.Receive = {
+	def receive () = {
 	  
 	  case Boss.finished(hop) =>{
 	    
@@ -42,7 +42,7 @@ class Boss(numNodes:Int = 1000, numRequest: Int = 1) extends Actor {
 	    this.status(index) = true
 	    if(this.status.forall(p=>p)){
 	      
-	      println(1.0 *Boss.sum/ Boss.count)
+	      println("average hop is : "+1.0 *Boss.sum/ Boss.count)
 	      sys.exit(0)
 	      
 	    }
@@ -54,7 +54,11 @@ class Boss(numNodes:Int = 1000, numRequest: Int = 1) extends Actor {
 	    
 	    val i = Boss.i
 	    var nid = NodeId.randomNodeId()
-	    while(randomPool.contains(nid.bits)) nid = NodeId.randomNodeId()
+	    while(randomPool.contains(nid.bits)){
+	      
+	      nid = NodeId.randomNodeId()
+	      
+	    } 
 	    randomPool.append(nid.bits)
 	    
 	    nodeList(i) = context.system.actorOf(Props(new Node(i,numRequest, nid)),s"NodeInstance$i")

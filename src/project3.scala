@@ -7,8 +7,8 @@ object project3 {
   
   def main(args:Array[String]) = {
     
-	  val numNodes = 1000
-	  val numRequest = 3
+	  val numNodes = args(0).toInt
+	  val numRequest = args(1).toInt
 	  val system = ActorSystem("Pastry")
 	  val bossInstance = system.actorOf(Props(new Boss(numNodes,numRequest)),"BossInstance");
 	  bossInstance ! Boss.start
