@@ -1,10 +1,12 @@
-1 Problem denition
+1 Problem denition.
+
 We talked extensively in class about the overlay networks and how they can be used to provide services. The goal of this project is to implement in Scala using the actor model the Pastry protocol and a simple object access service to prove its usefulness.
 The specication of the Pastry protocol can be found in the paper Pastry: Scalable, decentralized object location and routing for large-scale peer-to-peer systems. by A. Rowstron and P. Druschel. You can find the paper at http://research.microsoft.com/en-us/um/people/antr/PAST/pastry.pdf.
 The paper above, in section 2.3 contains a specication of the Pastry API
 and of the API to be implemented by the application.
 
-2 Requirements
+2 Requirements.
+
 You have to implement the network join and routing as described in the Pastry
 paper and encode the simple application that associates a key (same as the ids
 used in pastry) with a string. You can change the message type sent and the specfic activity as long as you implement it using a similar API to the one described in the paper.
